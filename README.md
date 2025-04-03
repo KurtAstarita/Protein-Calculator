@@ -47,4 +47,4 @@ This project is open-source.
 
 ## Disclaimers
 
-* [Protein Calculator Disclaimer](path/to/protein-calculator-disclaimer.md)
+* [Protein Calculator Disclaimer](/DISCLAIMER.md)

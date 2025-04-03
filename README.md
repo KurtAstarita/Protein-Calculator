@@ -48,3 +48,7 @@ This project is open-source.
 ## Disclaimers
 
 * [Protein Calculator Disclaimer](/DISCLAIMER.md)
+
+## Embed App
+
+* [How To Embed](https://post40gains.blogspot.com/p/how-to-embed-our-apps.html)

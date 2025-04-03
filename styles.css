@@ -1,0 +1,49 @@
+/* styles.css */
+#protein-calculator {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 90%;
+    width: 300px;
+    text-align: center;
+}
+
+#protein-calculator label,
+#protein-calculator input[type="number"],
+#protein-calculator select,
+#protein-calculator button {
+    display: block;
+    margin: 5px auto;
+    width: 90%;
+}
+
+#protein-calculator label {
+    text-align: left;
+}
+
+#protein-calculator input[type="number"],
+#protein-calculator select {
+    text-align: center;
+}
+
+#protein-result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    #protein-calculator {
+        padding: 15px;
+    }
+
+    #protein-calculator label,
+    #protein-calculator input[type="number"],
+    #protein-calculator select,
+    #protein-calculator button {
+        width: 95%;
+    }
+
+    #protein-result {
+        font-size: 0.9em;
+    }
+}

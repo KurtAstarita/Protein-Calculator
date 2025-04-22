@@ -1,16 +1,4 @@
 /* styles.css */
-.shopping-log-container #confirmation-dialog {
-    background: white;
-    border: 1px solid rgb(204, 204, 204);
-    display: none;
-    left: 50%;
-    padding: 20px;
-    position: fixed;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-}
-
 #protein-calculator {
     border: 1px solid #ccc;
     padding: 20px;

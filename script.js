@@ -1,10 +1,11 @@
+// script.js
 document.getElementById("calculate-protein").addEventListener("click", function() {
+    // Function to sanitize input (mainly to trim whitespace)
     function sanitizeInput(input) {
-        return DOMPurify.sanitize(input);
+        return input.trim();
     }
 
-    var weightInput = sanitizeInput(document.getElementById("weight-protein").value);
-    var weight = parseFloat(weightInput);
+    var weight = parseFloat(sanitizeInput(document.getElementById("weight-protein").value));
     var activity = document.getElementById("activity-level").value;
     var goal = document.getElementById("goal").value;
     var proteinFactor;
@@ -29,8 +30,8 @@ document.getElementById("calculate-protein").addEventListener("click", function(
         proteinFactor = (activity === "sedentary") ? 0.6 : (activity === "light") ? 0.7 : (activity === "moderate") ? 0.8 : (activity === "very") ? 0.9 : 1.0;
     }
 
-    // Convert weight to kg if in lbs (using the original input value for the check)
-    if (parseFloat(document.getElementById("weight-protein").value) > 200) {
+    // Convert weight to kg if in lbs
+    if (document.getElementById("weight-protein").value > 200) {
         weight = weight / 2.205; // Convert lbs to kg
     }
 

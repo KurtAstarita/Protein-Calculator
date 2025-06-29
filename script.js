@@ -5,14 +5,17 @@ document.getElementById("calculate-protein").addEventListener("click", function(
         return input.trim();
     }
 
-    var weight = parseFloat(sanitizeInput(document.getElementById("weight-protein").value));
+    var weightInput = sanitizeInput(document.getElementById("weight-protein").value);
+    var weight = parseFloat(weightInput);
+    var weightUnit = document.getElementById("weight-unit").value; // NEW: Get selected unit
+
     // NEW: Get Body Fat Percentage input
     var bodyFatPercentageInput = sanitizeInput(document.getElementById("body-fat-percentage").value);
     var bodyFatPercentage = parseFloat(bodyFatPercentageInput); // Will be NaN if input is empty or invalid
 
     var activity = document.getElementById("activity-level").value;
     var goal = document.getElementById("goal").value;
-    var proteinFactor; // This will represent grams per POUND of body weight OR grams per POUND of Lean Body Mass
+    var proteinFactor;
 
     // Input Validation for Weight
     if (isNaN(weight)) {
@@ -23,6 +26,13 @@ document.getElementById("calculate-protein").addEventListener("click", function(
         document.getElementById("protein-result").textContent = "Weight must be greater than zero.";
         return;
     }
+
+    // NEW: Convert weight to LBS if it's in KG
+    if (weightUnit === "kg") {
+        weight = weight * 2.20462; // Convert kg to lbs
+        console.log("Converted weight from kg to lbs:", weight.toFixed(2));
+    }
+
 
     // Input Validation for optional Body Fat Percentage
     var useLeanBodyMass = false;
@@ -55,16 +65,13 @@ document.getElementById("calculate-protein").addEventListener("click", function(
     // Recommendations often range from 0.8 to 1.2+ g/lb LBM
     // If using total body weight, factors are generally lower (0.6-1.0 g/lb total body weight)
 
-    // Let's establish two sets of factors: one for LBM, one for Total Body Weight (TBW)
-    // Adjust these values based on YOUR specific recommendations for g/lb LBM
-    // A common range is 0.8-1.0g/lb LBM for maintenance/mild gain, up to 1.2g/lb LBM or more for aggressive gain/fat loss.
-
     var proteinFactorsLBM = {
         "sedentary":    {"maintenance": 0.8, "muscle-gain": 1.0, "fat-loss": 1.1},
         "light":        {"maintenance": 0.9, "muscle-gain": 1.1, "fat-loss": 1.2},
-        "moderate":     {"maintenance": 1.0, "muscle-gain": 1.2, "fat-loss": 1.3}, // Potentially higher for moderate/intense
-        "very":         {"maintenance": 1.0, "muscle-gain": 1.2, "fat-loss": 1.3}, // Keep it consistent, very active might need max
-        "extremely":    {"maintenance": 1.0, "muscle-gain": 1.2, "fat-loss": 1.3}  // Assuming a value if you add this activity level
+        "moderate":     {"maintenance": 1.0, "muscle-gain": 1.2, "fat-loss": 1.3},
+        "very":         {"maintenance": 1.0, "muscle-gain": 1.2, "fat-loss": 1.3},
+        // FIX: Changed "extremely" to "extra" to match HTML
+        "extra":        {"maintenance": 1.0, "muscle-gain": 1.2, "fat-loss": 1.3}
     };
 
     var proteinFactorsTBW = {
@@ -72,7 +79,8 @@ document.getElementById("calculate-protein").addEventListener("click", function(
         "light":        {"maintenance": 0.7, "muscle-gain": 0.9, "fat-loss": 0.9},
         "moderate":     {"maintenance": 0.8, "muscle-gain": 1.0, "fat-loss": 1.0},
         "very":         {"maintenance": 0.8, "muscle-gain": 1.0, "fat-loss": 1.0},
-        "extremely":    {"maintenance": 0.8, "muscle-gain": 1.0, "fat-loss": 1.0}
+        // FIX: Changed "extremely" to "extra" to match HTML
+        "extra":        {"maintenance": 0.8, "muscle-gain": 1.0, "fat-loss": 1.0}
     };
 
 

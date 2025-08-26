@@ -86,15 +86,15 @@ document.getElementById("calculate-protein").addEventListener("click", function(
         },
         // Factors for Very Active
         "very": {
-            "maintenance": (calculationBasis === "Lean Body Mass") ? 1.0 : 0.8,
-            "muscle-gain": (calculationBasis === "Lean Body Mass") ? 1.2 : 1.0,
-            "fat-loss":    (calculationBasis === "Lean Body Mass") ? 1.3 : 1.1
+            "maintenance": (calculationBasis === "Lean Body Mass") ? 1.1 : 0.9,
+            "muscle-gain": (calculationBasis === "Lean Body Mass") ? 1.3 : 1.1,
+            "fat-loss":    (calculationBasis === "Lean Body Mass") ? 1.4 : 1.2
         },
         // Factors for Extra Active (matching your HTML value="extra")
         "extra": {
-            "maintenance": (calculationBasis === "Lean Body Mass") ? 1.0 : 0.8,
-            "muscle-gain": (calculationBasis === "Lean Body Mass") ? 1.2 : 1.0,
-            "fat-loss":    (calculationBasis === "Lean Body Mass") ? 1.3 : 1.1
+            "maintenance": (calculationBasis === "Lean Body Mass") ? 1.2 : 1.0,
+            "muscle-gain": (calculationBasis === "Lean Body Mass") ? 1.4 : 1.2,
+            "fat-loss":    (calculationBasis === "Lean Body Mass") ? 1.5 : 1.3
         }
     };
 
